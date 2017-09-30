@@ -1,4 +1,4 @@
-# USB-TO-GPIO USB Interface Adapter
+# IPMITool
 
 The Project show how to connect and work with SuperMicro IPMI Tool
 
