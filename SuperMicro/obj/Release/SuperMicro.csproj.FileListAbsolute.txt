@@ -1,0 +1,6 @@
+I:\work\Silicom\C# Exmples\SuperMicro\SuperMicro\bin\Release\SuperMicro.exe.config
+I:\work\Silicom\C# Exmples\SuperMicro\SuperMicro\bin\Release\SuperMicro.exe
+I:\work\Silicom\C# Exmples\SuperMicro\SuperMicro\bin\Release\SuperMicro.pdb
+I:\work\Silicom\C# Exmples\SuperMicro\SuperMicro\obj\Release\SuperMicro.exe
+I:\work\Silicom\C# Exmples\SuperMicro\SuperMicro\obj\Release\SuperMicro.pdb
+I:\work\Silicom\C# Exmples\SuperMicro\SuperMicro\obj\Release\SuperMicro.csprojResolveAssemblyReference.cache

@@ -1,0 +1,2012 @@
+-------------------------------------------------------------------------------
+SMCIPMITool Release notes
+Copyright(c) 2016 by Super Micro Computer, Inc.          http://supermicro.com/
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+Readme
+-------------------------------------------------------------------------------
+SMCIPMITool is a command line interface utility for the Supermicro SuperBlade
+and IPMI devices. 
+
+-------------------------------------------------------------------------------
+Setup 
+-------------------------------------------------------------------------------
+
+SMCIPMITool provides bundled JRE Package and pure jar Package.
+
+Package List:
+
+[Windows]      SMCIPMITool_2.x.x_build.******_bundleJRE_Windows.zip
+[Linux 64bit]  SMCIPMITool_2.x.x_build.******_bundleJRE_Linux_x64.tar.gz
+[Linux 32bit]  SMCIPMITool_2.x.x_build.******_bundleJRE_Linux.tar.gz
+
+You can use SMCIPMITool without Java installed by using bundled JRE package. 
+Unzip the package in your platform. The native executable file as 
+following.
+
+Windows : SMCIPMITool.exe
+Linux   : SMCIPMITool 
+
+If you want to use pure jar package or you have installed java run time.
+Unzip the jar package and use java.exe to start SMCIPMITool.
+
+We suggest use Oracle Java for fully Java runtime supported. 
+Here is extra step to install Java runtime if you use pure Jar package:
+please go to following link for download Java runtime.
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+For Linux environment, add jre to your PATH line in .bashrc file
+PATH=/usr/java/jre1.6.0_12/bin:$PATH
+"jre1.6.0_12" depending on your version of java.
+
+-------------------------------------------------------------------------------
+Usage and Command
+-------------------------------------------------------------------------------
+In the console mode, please execute the following command to start. 
+
+Usage:
+      1.Command Line mode: Send one command to a managed system
+        [java]
+        java -jar SMCIPMITool.jar <IP> <username> <password> [commands ... ]
+		
+        [Windows]
+        SMCIPMITool.exe <IP> <username> <password> [commands ... ]
+		
+        [Linux]
+        SMCIPMITool <IP> <username> <password> [commands ... ]
+	  
+      2.Shell mode: Interactive with a managed system. 
+        [java] 
+        java -jar SMCIPMITool.jar <IP> <username> <password> shell
+		
+        [Windows]
+        SMCIPMITool.exe <IP> <username> <password> shell
+		
+        [Linux]
+        SMCIPMITool <IP> <username> <password> shell
+
+
+-------------------------------------------------------------------------------
+ Version 2.16.0 build 160816
+-------------------------------------------------------------------------------
+1. Support ipv6 BMC connection
+2. Support NVMe48 device          
+3. Add Greenlow MRC code support
+4. Add FRU chassis type support 18h~20h
+5. Fix chassis intrusion reading issue
+6. Add boundary string check to wsiso  mount command
+7. Fix node product key display issue
+8. Fix found list command display issue
+
+-------------------------------------------------------------------------------
+ Version 2.15.1 build 160525
+-------------------------------------------------------------------------------
+1. Fix 10G switch does not show up in listtemp command issue
+2. Remove VBAT sensor for B1SD2 and update watchdog sensor
+3. Update kvm, rsc and rko command to support stunnel
+   FW compatibility:
+       SMT_X10 v3.29, SMT_X11 v1.16
+4. Fix number of logical cores on each processor
+5. Update IB Temp and 10G Temp in B10DRG and B10DRT
+6. Fix KVM console window title
+7. Disable KVM user's ip column
+8. Display sensor LowNR and LowCT readings 0 instead of N/A
+9. Fix listmac command is NOT displaying the MACs correctly  
+10. Fix listtemp command not showing sensor names (10G Temp vs IB Temp) correctly 
+11. Set all microblade VBAT high limit to N/A
+12. Remove DIMM alias information due to platform dependency in nm20 command
+13. Support blade type B2SS1
+14. Support bootloader table for psu Check command
+15. Support dynamic kvm ssl port and change kvm library(iKVM.dll)
+
+-------------------------------------------------------------------------------
+ Version 2.15.0 build 160122
+-------------------------------------------------------------------------------
+1. Add Get/Set SOL retry count and retry interval commands
+2. Add command to get blade serial number in superblade commands
+3. Fix Screenshot function send wakeup symbol issue
+4. Support MicroCloud device in tp commands
+5. Add ipmi oem x10cfg dns [ip] command to Get/Set DNS IP
+6. Add superblade powerconsumption command to display enclosure power 
+   comsumption
+7. Add MicroBlade switch power control command option(GracefulPowerDown and 
+   GracefulReboot) 
+8. Remove MicroBlade psu power control command 
+9. Add superblade  listmac command to list module mac address 
+10. Add superblade  middle plane FRU info command 
+11. Support 24 NVME devices
+12. Add new Grantley MRC code definition
+13. Modify software product key checking rules
+14. Add Microblade B2SS2 support
+15. Add temperature field in "hdd disk" and "hdd info" command
+16. Fix tas related command sometimes return null exception on linux 
+    platform issue
+17. Update the SEL date format to YYYY/MM/DD 
+18. Add boundary check messages to tp mcuUpdate command
+19. Add microblade power consumption command
+20. Add bundary checks to microblade node commands
+
+-------------------------------------------------------------------------------
+ Version 2.14.0 build 150909
+-------------------------------------------------------------------------------
+1. Add boundary checks to tp info command
+2. Fix microblade node sensor length due to FW structure change
+3. Add microBlade fru commands
+4. Fix nvme slot 8 and 9 locate status error bug
+5. Fix preserve option behavior is not same with web UI bug
+6. Support firmware update through https channel
+7. Update X11 node manager 4.0 naming
+8. Fix superblade blade 1 kvm command exception
+9. Update bundle jre to 1.7 
+10. Update pminfo command for SAS_94E690
+11. Add nvme insert function
+12. Update HDD info structure due to firmware change
+13. Add new GUID for SAS_946E90 and X11_AST2400
+14. Update ipmi oem summary command to to support multiple system mac by 30 21 
+   command
+15. Improve the Reservation Canceled or Invalid Reservation ID issue when 
+   getting SDR or NMSDR
+16. Description: Fix NVME function fail on linux platform issue  
+17. Replace ""Error" to "Status" in the title of superblade system command
+18. Update microblade nodeSensorInfo structure due to FW change
+19. Update NVME related command due to TAS command change
+20. Fix infiniband switch temperature display error 
+21. Add Record ID and Sensor number two columns in --full option
+22. Update nm 4.0 tag in "nm ver" command
+23. Add "execm" command. It can help "task run" function to support 
+    multi-executive. 
+24. Update tp related commands messages to remove specific "twinpro" string.
+25. Add pre-checking rules to compare HW and FW revision before psu FW update
+26. Fixed "BIOS file invalid" error message when updating X9DRT-HF 
+27. Fixed incorrect MRC error code DIMM location 
+28. Add CPLD version in ipmi oem summary command
+29. Improved the stability of reading Module Number of pminfo command
+30. Add ipmi oem summary command
+31. Verify with microblade node power command with option 4
+32. Skip product key checking in SW FRU0 when the SWID is 0
+33. Fix nm20 listImagesInfo command
+34. Update length of PWS Module Number from 12 bytes to 13 bytes
+35. Fix TwinPro node fields is empty issue
+36. Fix ipmi power status command to display chassis power status
+37. Fix command return codes
+38. Move superblade related commands to second layer
+39. Update TwinPro information
+40. Update sel oem sensor type "AC Power On" and "Xeon Phi Throttle"
+41. Update vmwa to support MicroNode and SuperNode.
+42. Fix SuperBlade CMM CPU ID and Memory Speed display error
+43. Support new blade type B10DRG for SuperBlade
+44. Updated HDD DISK SMART failure OEM SEL
+45. Updated nm20 cpucore command
+46. Added new SuperBlade type B10DRI-N and B10DRC-N and B10DRT-IBF2 to display 
+    sensor entities
+47. Fix SuperBlade power supply display 2 fans instead of 4 fans issue
+48. Added support power consumption sensor(SDR record type = 0x0b)
+49. Added configID and type for display Twin system information
+     Command: tp info
+50. Added microblade midplane commands to display middle plane information
+     Command: microblade midplane
+51. Added new blade type B1SA4F and B1SD2 (both for microblade) to display 
+    sensor entities
+52. Updated actoolp.jar  (build 20141227)
+53. Added BIOS MRC Code for SEL
+54. Added NM platform ID Grangeville, Groveport and Greenlow platform
+55. Added BPN ID and Revision fields for display Twin system information
+56. Added "PUE3 Optimal" fan mode setting. The original "PUE Optimal" mode 
+    re-named "PUE2 Optimal" mode
+
+ -------------------------------------------------------------------------------
+  Version 2.13.0 build  141210
+ -------------------------------------------------------------------------------
+ 1.Added "rko" command for remote keyboard operation
+     rko [filepath]  iKVM remote keyboard operation(X9,X10 ATEN firmware)
+ 2.Added "rsc" command for remote screen shot
+     rsc [filename.ext]  iKVM remote screeen capture(X9,X10 ATEN firmware) ext:png|jpg
+ 3.Added preserve Option for Blade B9 firmware update (AMI X8 code base)  
+ 4.Added Support 64bits OS for AMI X8 virtual media (command :vmw) 
+ 5.Added ipmi sensor --full to display Low NR,Low CT,High CT and High NR for sensor limit
+ 6.Added retry mechanism for checking OOB product key method
+ 7.Added following commands under microblade catelog to support microblade management
+     node     MicroBlade node (10)
+     switch   MicroBlade switch (5)
+     psu      MicroBlade PSU (4)
+ 8.Updated "node product key" word instead of "product key" 
+ 9.Updated use critical value as high & low limit
+ 10.Updated set keys command to allow upper case and lower case MAC address
+ 11.Updated command "swkey" to "nodekey"
+ 12.Removed log4j message in the flasha command
+ 13.Fixed SuperBlade fan display issue when number of fan is lager than 
+
+ -------------------------------------------------------------------------------
+  Version 2.12.0 build  140912
+ -------------------------------------------------------------------------------
+
+ 1.Added swkey command to display current activated software product keys
+	swkey list                       List Software Product Key
+ 2.Added following nvme commands for PCIe ssd device (CPLD solution)
+	nvme info                        PCIe SSD NVME Info
+  	nvme locate <aoc> <slot>         Locate SSD
+	nvme stopLocate <aoc> <slot>     Stop Locate SSD
+	nvme eject <aoc> <slot>          Eject SSD
+ 3.Added bbp shutdown setting commands
+	bbp shutdown <on|off> [sec]      On/Off graceful shutdown after timeout
+ 	bbp shutdownTimeout              Get timeout value for graceful shutdown
+ 4.Added more options in boot option
+	11: UEFI USB KEY
+	12: UEFI USB HDD
+	13: UEFI USB CD/DVD
+ 5.Added B10DRC to display sensor entities
+ 6.Added B1DRC(for Microblade) to display sensor entities
+ 7.Added Retry mechanism to Twin MCU update function
+ 8.Added new SW product key check for SFT-SUM-LIC and SFT-DCMS-Single
+ 9.Added Utilization Average items in "nm30 cupsData" command
+ 10.Updated "tp info" command for 2 node size of UltraTwin and TwinPro
+ 11.Updated nm30 cupsCore, nm30 cupsIO and nm30 cupsMem as unsigned value.
+ 12.Updated SW FRU check for AMI firmware
+ 13.Updated for HP IPMI connection
+ 14.Updated board ID
+ 15.Fixed cannot get task status which is exist in the task pool 
+
+ -------------------------------------------------------------------------------
+  Version 2.11.0 build  140704
+ -------------------------------------------------------------------------------
+
+ 1.Added TAS(Thin-Agent Service) commands  (command: tas <subcommand>)
+ 2.Added boot device options command in ipmi power category 
+  (command: ipmi power bootoption)
+ 3.Added MCU firmware update function (command: tp mcuUpdate)
+ 4.Added MicroCMM OEM SEL 
+ 5.Added ATEN SuperBlade GUID 
+ 6.Updated return code of wsiso command to be the same with SMB status OEM 
+   command
+ 7.Updated pminfo command for a special case in 721p
+ 8.Updated TwinPro health info to display N/A when node is off
+ 9.Updated TwinPro List ChassisLocation address
+10.Updated wsiso command for mounting failed case
+11.Updated the display information incorrect for TwinPro with 2 node
+12.Updated pminfo command for PWS-750P to show correct PWS Serial Number, 
+   PWS Module Number and PWS Revision
+13.Updated Sensor Type code for MicroCMM OEM SEL
+14.Updated Hashwell CPUID for SuperBlade
+
+ -------------------------------------------------------------------------------
+  Version 2.10.0 build  140521
+ -------------------------------------------------------------------------------
+ 1.Added x10 Web OEM setting commands (includes LDAP,AD,RADIUS, IP access,NTP,
+   DDNS,alert and smtp commands)
+ 2.Updated Exit code is not 0 when WSISO mount successfully
+ 3.Updated pminfo command to support DC source type for PWS-503D-240
+ 4.Updated a null word shown in the find command
+ 5.Updated FRU parser to add boundary to prevent array index out of bound
+ 6.Updated memory ECC sel event log for Brickland platform
+ 7.Added B9QR7 and B10DRI in SuperBlade management
+ 8.Updated "tp info" command for dual nodes TwinPro system
+
+ -------------------------------------------------------------------------------
+  Version 2.9.2 build  140423
+ -------------------------------------------------------------------------------
+ 1.Updated domain name supported in wsiso command
+ 2.Updated "nm20 cpumemtemp" command for X10 platform
+
+ -------------------------------------------------------------------------------
+  Version 2.9.1 build  140411
+ -------------------------------------------------------------------------------
+ 1.Update "wsiso mount" command to response the result of the mounting ISO
+ 2.Update board ID table
+
+ -------------------------------------------------------------------------------
+  Version 2.9.0 build  140408
+ -------------------------------------------------------------------------------
+ 1.Added ISO/VM OEM command for X10 Platform (wsiso command)
+ 2.Added BIOS OEM error for Memory and QPI
+ 
+ -------------------------------------------------------------------------------
+  Version 2.8.1 build  140319
+ -------------------------------------------------------------------------------
+ 1.Fixed a null exception in command "ipmi flasha"
+ 2.Added B9DRG-3M in SuperBlade
+
+ -------------------------------------------------------------------------------
+  Version 2.8.0 build  140317
+ -------------------------------------------------------------------------------
+ 1.Added TwinPro commands
+     Command:tp
+     Command(s):
+     info                             Get MCU Info
+     systemName  [data]               Get/Set System Name
+     systemPN                         Get System P/N
+     systemSN                         Get System S/N
+     chassisPN                        Get Chassis P/N
+     chassisSN                        Get Chassis S/N
+     backPlanePN                      Get BackPlane P/N
+     backPlaneSN                      Get BackPlane S/N
+     nodePN                           Get NodeP/N
+     nodeSN                           Get NodeS/N
+ 2.Added MicroBlade commands
+     Command:microBlade
+     Command(s):
+     summary                                  MicroBlade summary
+     sensor <blade index> <node index>        MicroBlade sensor
+     status <blade index> <node index>        MicroBlade status
+     switch <switch index>                    MicroBlade switch
+     psu <psu index>                          MicroBlade PSU
+     power                                    MicroBlade Power control
+ 3.Updated CPU Core Voltage high and low limit for BHQGE and BHDGT
+ 4.Added SDR OEM Type to support OEM X9DAX-7F-HFT BOA project
+ 5.Added SDR Type 2 to support PS Status Compact SDR
+ 6.Fixed fru read null issue for X10DRT-D-SG007
+ 7.Updated issue that shows CPU temp when CPU is not installed in X8,X9 AMI firmware  
+ 8.Added domain name supported in following cases
+    1.launch SMCIPMITool
+    2.ch command in shell mode
+     (it only works for initial connection. All the LAN or IP setting in BMC still needs to use IP)
+ 9.Updated AMI X9,B9 firmware version check
+
+ -------------------------------------------------------------------------------
+  Version 2.7.0 build  140129
+ -------------------------------------------------------------------------------
+ 1.Added nm30 commmands (partical)
+	Command:nm30
+	Command(s):
+	cupsCap                          CUPS Capability
+	cupsData                         CUPS Data
+	cupsConfig                       CUPS Configuration
+	cupsPolicy                       CUPS Policies
+	cupsCore                         Core CUPS Utilization
+	cupsIO                           IO CUPS Utilization
+	cupsMem                          Memory CUPS Utilization          
+ 2.Updated "ipmi flashr" for AMI X9 firmware update (Verify stage failure)          
+ 3.Updated "nm20 cpumemtemp" command to remove none present CPU temperature
+ 4.Updated "nm ver" command to recognize nm3.0 
+ 5.Updated unit in "nm20 statistics" command for nm3.0 
+ 6.Improved version checking perfromance for X10,MicroBlade and MicroCMM firmware 
+   update
+
+ -------------------------------------------------------------------------------
+  Version 2.6.6 build  140115
+ -------------------------------------------------------------------------------
+ 1.Added isActivated command in BIOS command set
+ 2.Updated default value of TJmax value for nm20 cpumemtemp command
+ 3.Updated type model name for CB3, MicroCMM and MicroBladeNode in the found list 
+  (find command)
+ 4.Added NM 3.0 part of parameters into nm20 command set
+ 5.Updated KVM support for B1SA4-F
+ 6.Fixed the getBoardModel exception message
+ 7.Updated product ID (Grantley) in the nm20 deviceID command for nm 3.0 spec
+ 8.Updated "nm20 selftest" for nm 3.0 spec
+ 9.Updated "nm20 ver" for nm 3.0 spec
+10.Added Board ID (X9QRH-TF,A1SA2-2750F,C7Z97-OCE,X10DRFR,X10DRL-i,X10SRL,
+   X10SRW-F,X10SRI,X10DRC/i-LN4+/T4+,X10DAi,X10DRT-D-SG007,X10SRH-F)
+
+ -------------------------------------------------------------------------------
+  Version 2.6.5 build  131220
+ -------------------------------------------------------------------------------
+  1.Updated input type (DC) for pminfo command
+  2.Updated to support type for Micro CMM and Micro Blade firmware update
+  3.Fixed a workaround for 1K62P power status
+  4.Fixed a workaround for H8DG6 duplicated board ID issue
+  5.Fixed "vmwa" command cannot work in no GUI Linux platform issue
+  6.Updated PMBus item names
+  7.Updated for 920P check rule 
+  8.Updated OOB OEM event log
+  9.Updated to support BIOS ver in OOB function
+
+ -------------------------------------------------------------------------------
+  Version 2.6.4 build  131122
+ -------------------------------------------------------------------------------
+  1.Updated CPU number of memory ecc error (X8 MBs and Bromolow)
+  2.Updated OEM RAKP method and option
+  3.Updated 10G structure for SuperBlade (CMM V2.2.53 or later) (IssueID=49183)
+
+ -------------------------------------------------------------------------------
+  Version 2.6.3 build  131108
+ -------------------------------------------------------------------------------
+  1.Updated GUID and PMBus Channel for CB3(JBOD IPMI controller) (IssueID=48624) 
+  2.Fixed [ipmi sensor] command "exception:null" issue (IssueID=48831)
+
+ -------------------------------------------------------------------------------
+  Version 2.6.2 build  131104
+ -------------------------------------------------------------------------------
+  1.Updated PMbus reading for 920P
+  2.Updated command for AMI BIOS ver command.(system is on) (IssueID=47707)
+  3.Updated board ID for X9DRW-7TPF
+  4.AMI x9 flash procedure updated
+	a.Skip Config section as YAFU tool does. Let the UI looks automic
+	b.Added check X9 firmware version downgrade rule API: V1.V2.V3 
+	 (currently 2.19.0): 
+	c.Chunk Size auto-resizing 16k to 128 Byte 
+  5.Added MicroBladeCMM and MicroBlade Node GUID
+  6.Updated ME firmware version display incorrect  (IssueID=48615)
+  7.Updated Board ID (X9DRD-7LN4F 07 02)
+  8.Added HDD Status SDR
+  9.Updated IP check subroutine
+ 10.Updated BHQG6/E sensors high low limit
+
+ -------------------------------------------------------------------------------
+  Version 2.6.1 build 130917
+ -------------------------------------------------------------------------------
+  1.Updated "bios ver" command for AMI firmware. Enable this command when system 
+    is On.
+  2.Updated return code of "bios ver" command
+	
+ -------------------------------------------------------------------------------
+  Version 2.6.0 build 130828
+ -------------------------------------------------------------------------------
+  1.Updated iKVM v1.69 r14 (Power control function enabled)
+  2.Added "sel time" command for get/set SEL time 
+  3.Updated new Board ID 
+  4.Updated OOB OEM SEL 
+  5.Updated board ID list
+  6.Updated BIOS update function for X9DRL 
+  7.Updated a workaround for unsigned linear data format for PMBus power consumption
+  8.Updated X9 and X10 firmware update message and logic of firmware image checking
+  9.Fixed cannot open more then one KVM to multiple X9 Renesas BMC
+  10.Updated ME version format. Fixed build number. Major.Minor.ABC.PATCH
+  11.Added "gethostname/sethostname" command for get/set hostname.
+
+ -------------------------------------------------------------------------------
+  Version 2.5.4 build 130704
+ -------------------------------------------------------------------------------
+ 1.Added SIMBL user management commands in CMM (SuperBlade)
+   Command: blade [BladeIndex] user
+   Sub Commands:
+   list                             List user
+   add                              Add user
+   delete                           Delete user
+   level                            Update user level
+   setpwd                           Update user password
+  
+ -------------------------------------------------------------------------------
+  Version 2.5.3 build 130625
+ -------------------------------------------------------------------------------
+ 1.Added B9DRG-E
+ 2.Added PMBus(B0,B2,B4,B6) and FRU (A0,A2,A4,A6) addresses for 1K66P
+ 3.Updated B9DR6, B9DRG and B9DRT sensor table for DIMM temp  
+ 4.Added SuperBlade OEM event (Shutdown the problematic blade after minutes of 
+   CPU over heating)
+ 5.Added exitcode for getMACs command (OOB function)
+ 
+ -------------------------------------------------------------------------------
+  Version 2.5.2 build 130523
+ -------------------------------------------------------------------------------
+ 1.Modify "ipmi sensor" command to catch SDR reservationID cancelled
+ 2.Added Heavy IO fan mode
+ 3.Update format for "bios setkeys" command
+ 4.Fixed incorrect NMSDR channel number
+ 5.Added X10 ASPEED firmware update preserve configure option
+
+ -------------------------------------------------------------------------------
+  Version 2.5.1 build 130415
+ -------------------------------------------------------------------------------
+ 1.Removed retry packet message
+ 2.Added DIMM ECC error for X10 platform
+ 3.Fixed Operator and User privilege cannot execute command and enter to shell 
+   mode issue
+ 4.Updated JCurses Windows 64bit library
+ 5.disable "sol window" command in command mode. 
+ 6.Added "task state" command
+ 7.Added shutdown command for SMCIPMIToold
+ 8.Updated "nm20 selftest" command according to nm20 v1.6
+
+ -------------------------------------------------------------------------------
+  Version 2.5.0 build 130401
+ -------------------------------------------------------------------------------
+ 1.Added ATEN X10 ASPEED firmware update function 
+   Command : flasha <filename> Flash ASPEED (X10,*.bin) IPMI firmware
+ 2.Updated new platforms information in "nm20 deviceID" command
+ 3.Fixed bug for checking "bios getmacs" command parameters
+ 4.Fixed "operator" privilege can not login issue
+ 5.Added X10SLM-F, 10SLD and X10SLE GUID 
+ 6.Feature added: Concurrent Background tasks (Help for BIOS and BMC firmware 
+   update)
+ 	  
+      Command:task
+      Command(s):
+      run <IP> <ID> <PW> <Cmd...>      Execute a command in background
+      command   <taskID>               Task command
+      startTime <taskID>               Task start time
+      endTime   <taskID>               Task end time
+      exitcode  <taskID>               Task exit code
+      message   <taskID>               Task message
+      remove     <taskID>              Remove Task
+      message2file <taskID> <file>     Save task message to file
+      removeAll                        Remove All Task (End)
+      getTaskIDs                       Get all Task ID
+      status                           Task status
+      limit <size>                     Limit max concurrent Tasks size
+ 		  
+      Example of "task run": Create a task (take BIOS update as an example)
+      SIM(WA)>task run 10.133.176.208 ADMIN ADMIN bios update C:\x9drw3.219
+      Task ID = 1
+
+      10.133.99.62 X9SCD (S0/G0,20w,v01.79) 11:52 SIM(WA)>task status
+      TaskID | Start Time      | End Time        | Elapse   | Status  | Exit | Commanad
+      ------ | ----------      | --------        | ------   | ------  | ---- | --------
+           1 | 03/28 11:52:08  |                 | 00:00:10 | RUNNING |      | 10.133.176.208 ADMIN ADMIN bios update C:\x9drw3.219               
+          
+      Example of "task message": 
+      SIM(WA)>task message 1
+      TaskID : 1 [RUNNING] [Command : 10.133.176.208 ADMIN ADMIN bios update C:\x9drw3.219 ]
+      System is On. Preparing BIOS update procedure .........Done
+      ===============
+       BIOS Image info
+      ===============
+       Date     = 02/19/2013
+       MB Type  = X9DRW-3F
+       Size     = 16 MB
+
+      =============
+       BIOS ROM info
+      =============
+       0636 BIOS Date: 02/19/2013
+
+ 	  ====================
+       Uploading BIOS image
+      ====================
+      Progress:|>>>>>>>>>>>>>>>>>
+      TaskID : 2 [RUNNING]
+          
+      Support concurrent multiple Task:
+      SIM(WA)>task status
+      TaskID | Start Time      | End Time        | Elapse   | Status  | Exit | Commanad
+      ------ | ----------      | --------        | ------   | ------  | ---- | --------
+           1 | 03/28 11:51:18  | 03/28 11:51:18  | 00:00:00 | END     |  180 | 10.133.176.208 ADMIN ADMIN bio update C:\x9drw3.219
+           2 | 03/28 11:52:08  |                 | 00:02:05 | RUNNING |      | 10.133.176.208 ADMIN ADMIN bios update C:\x9drw3.219
+           3 | 03/28 11:54:09  |                 | 00:00:04 | RUNNING |      | 10.133.99.70 ADMIN ADMIN bios update C:\x9drw3.219          
+ 		  
+ 7.Feature added: TCP Shell server (SMCIPMIToold.jar) feature for OOB Multi-Tasking feature (Separate release for OOB project)
+     Use socket to connect to TCP Shell server as shell mode. 
+     Command:
+     java -jar SMCIPMIToold [port]         (default port is 6666)
+     Server Example:
+     c:\>smcipmitoold
+     Server start at port :6666
+ 		    
+     Client Example: (Use Telnet as an Example, OOB will use internal TCP socket)
+     c:\>telent 10.133.11.22 6666
+     >ch 10.133.99.62 ADMIN ADMIN
+     Old IP       : 127.0.0.1
+     New IP       : 10.133.99.62
+     Old Username : xxxxx
+     New Username : ADMIN
+     Old Password : xxxxx
+     New Password : ADMIN
+            
+     >ipmi acpi
+     ACPI Power Status: S0/G0 (working)
+          
+     >$quit 
+     (Disconnect)
+ 		    
+
+		  
+		  
+		  
+ -------------------------------------------------------------------------------
+  Version 2.4.10 build 130206
+ -------------------------------------------------------------------------------
+ 1.Updated CMM firmware update procedure (Works with CMM firmware 02.05.43)
+
+ -------------------------------------------------------------------------------
+  Version 2.4.9 build 130130
+ -------------------------------------------------------------------------------
+ 1.Bug fixed for wrong message of BIOS update when product key is not activated 
+   yet.
+ 2.Remove long exception message when error occurred in BIOS update
+
+ -------------------------------------------------------------------------------
+  Version 2.4.8 build 130125
+ -------------------------------------------------------------------------------
+ 1.Updated parameters for ATEN X10 iKVM
+ 2.Added X9Q for BIOS image board ID checking
+ 3.Added support for X10 KVM
+ 4.Added BMC configuration backup and restore features
+
+ -------------------------------------------------------------------------------
+  Version 2.4.7 build 130110
+ -------------------------------------------------------------------------------
+ 1.Added B9DRGX DIMM temp.
+ 2.Updated the uploading chunkSize to 1K bytes for flashr command for stability issue 
+ 3.Updated Board IDs
+ 4.Added X10 Aspeed GUID type 
+ 
+ -------------------------------------------------------------------------------
+  Version 2.4.6 build 121221
+ -------------------------------------------------------------------------------
+  1.Updated GB 3 & 4 initialized and Error reading (SuperBlade)
+  2.Added PUE Optimal fan mode (ipmi fan command)
+
+ -------------------------------------------------------------------------------
+  Version 2.4.5 build 121211
+ -------------------------------------------------------------------------------
+  1.Added checking for B9 firmware version and disallow downgrade to 1.13.3 or 
+    below.
+  2.Added PUE Optimal fan mode (ipmi fan command)
+  3.Added ECFStatus retry for flashr command
+  4.Added BBP Battery Backup Power module management
+        Command:bbp
+        Command(s):
+        status                           Display battery backup power status
+        autoDischarge <module> <day>     Set auto discharge by days
+        discharge <module>               Manually discharge battery          
+       	
+       	Example: bbp status
+		[SlaveAddress = 70h] [Module 1]
+ 		Item                           |                Value
+ 		----                           |                -----
+ 		Manufacturer                   |           SUPERMICRO
+ 		Model Name                     |          PWS-206B-1R
+ 		Serial Number                  |      TEST1234567890A
+ 		Product Version                |                  1.2
+ 		Firmware version               |                  1.0
+ 		-----                          |
+ 		Battery Voltage                |              16.27 V
+ 		Battery Current                |                 0 mA
+ 		Battery Pack Temp              |              30C/86F
+ 		Board Temp                     |                  N/A
+ 		Power Wattage                  |                 200W
+ 		Cycle Count                    |                    6
+ 		-----                          |
+ 		Battery Power Status           |               Normal
+ 		Remaining Energy               |                  99%
+ 		Discharge Status               |                 None
+ 		Discharge Setting              |       Auto (30 days)
+ 		Discharge Remaining Days       |              30 days
+ 		Battery Status                 |               0xC0E0
+                           				|      [FULLY CHARGED]
+                               			|        [DISCHARGING]
+                               			|   [TERMINATE CHARGE]          
+         	
+ -------------------------------------------------------------------------------
+  Version 2.4.4 build 121119
+ -------------------------------------------------------------------------------
+ 1.Add 3rd Auxiliary Firmware Revision for "ipmi ver" command (X9 and 
+   B9 (Renesas) boards)
+ 2.Fixed a Exception be thrown in a none-hdd function avaiable platfrom (AMI)
+ 3.Add -ver sub command for ATEN and AMI firmware update function
+   This is used for showing version of firmware image (ipmi flashr, ipmi flashh)
+ 4.Added B9DR6, B9DR7 and B9DRP DIMM temperature sensors
+ 5.Added B9 firmware update version checking (v1.13.3 or below cannot update 
+   by SMCIPMITool)
+
+ -------------------------------------------------------------------------------
+  Version 2.4.3 build 121019
+ -------------------------------------------------------------------------------
+ 1.Added SuperBlade Burst command
+ 
+     Command:burst
+     Command(s):
+     allUp                            Power burst up all blades
+     allDown                          Power burst down all blades
+     allReset                         Power burst reset all blades
+     allSoftshutdown                  Power burst softshutdown all blades
+     up <index(es)>                   Power burst up blades (ex: 1 2 5)
+     down <index(es)>                 Power burst down blades (ex: 1 2 5)
+     reset <index(es)>                Power burst reset blades (ex: 1 2 5)
+     softshutdown <index(es)>         Power burst softshutdown blades (ex: 1 2 5) 
+ 
+  2.Updated DC current formula for power supply
+  3.Updated retry count (from UDP and RMCP)
+  
+ -------------------------------------------------------------------------------
+  Version 2.4.2 build 121015
+ -------------------------------------------------------------------------------
+ 1.Add Logical HDD command
+
+   Command:hdd
+   Command(s):
+   map                              Display HDD present/error status
+   info                             Display HDD info table
+   disk <index>                     Display HDD detail info by index
+   lmap                             Display Logical HDD present status
+   linfo                            Display Logical HDD info table
+   ldisk <index>                    Display Logical HDD detail info by index 
+ 
+ 2.Removed HDD temp since HW doesn't support
+ 3.Added timeout handling for BIOS update process in case of BIOS crashed
+ 
+ -------------------------------------------------------------------------------
+  Version 2.4.1 build 121005
+ -------------------------------------------------------------------------------
+ 1.Added BIOS multi-Session upload capability
+ 2.Updated Trap Receiver exception handler 
+ 3.Added HDD status commands
+     Command:hdd
+     Command(s):
+     map                              Display HDD present/error status
+     info                             Display HDD info table
+     disk <index>                     Display HDD detail info by index
+
+ 4.Added FRU commands
+     Command:ipmi
+     Command(s):
+     fruw <field> <value>             Write FRU
+     frubackup <filename>             Backup FRU information
+     frurestore <filename>            Restore FRU information 
+	 
+	 
+ -------------------------------------------------------------------------------
+  Version 2.4.0 build 120914
+ -------------------------------------------------------------------------------
+ 1.Updated "bios update" command for AMI firmware
+ 2.Fixed BIOS tag index out of range and apply "$FID" index searching for MB type
+   and BIOS date
+ 3.Removed -PDT for BIOS update function
+ 4.Added IBFDR
+ 5.Updated IB command for IBFDR and IBQDR
+ 6.Updated B9DRI VBAT & 1.1V sensors limit
+ 7.Updated B9DRI CPU temp high limit
+ 8.Added B9DRP
+ 9.New release package with bundled JRE 
+
+ -------------------------------------------------------------------------------
+  Version 2.3.1 build 120725
+ -------------------------------------------------------------------------------
+ 1.Update B9DRT,B9DRG,B9DRGX CPU temp format
+ 2.Added B9DR7 and B9DRGX
+ 3.Bug fixed "nm20 addPolicy" command for enabling CPU and memory sub domain
+
+ -------------------------------------------------------------------------------
+  Version 2.3.0 build 120629
+ -------------------------------------------------------------------------------
+ 1.Added BIOS update and product key commands (X9 boards)
+
+  Command:bios
+  Command(s):
+  ver                              Check BIOS version
+  image <filename>                 Check BIOS image file
+  update <filename> [options]      Update BIOS
+  setKey <ProductKey>              Activate Product Key for BIOS update
+  getMACs <start> <end> <netMask> <file>   Collect MAC addresses into file
+  setKeys <file>                   Activate product keys for BIOS update
+
+ 2.Added "ipmi power status" command
+ 3.Update B9 series MB for CPU temperature
+ 
+ -------------------------------------------------------------------------------
+  Version 2.2.0 build 120525
+ -------------------------------------------------------------------------------
+ 1.Updated CPU2 voltage reading for B9DRi,B9DRG and B9DRT
+ 2.Updated X9 OEM SEL (Mem Ecc for Romley EP,EX and EN)
+ 3.Added support for E104 mid-plane
+ 4.Added Blade name alias function
+  (related command: bl <index> alias [name], sys, bl status, bl <index> status>
+ 5.Added B9DRT
+ 6.Added X9 and B9 Renesas IPMI firmware update function (AMI firmware)
+            Command:ipmi
+            Command(s):
+            flashr <filename>                Flash Renesas (X9&B9) IPMI firmware
+
+            Example:
+            192.168.23.17 (S0/G0,55w) 16:08 SIM(X9)>ipmi flashr c:\17.ima
+            **************************************************************
+            WARNING!
+            Firmware upgrade must not be interrupted once it is started.
+            Once you get error after Upgrading, please use local KCS tool
+            for recovery.(DOS:RKCSFlsh.exe, Linux:RLin32Flsh or
+            Windows:RWin32Flsh.exe )
+            **************************************************************
+            Check firmware file... Done (ver:1.10.15)
+            Check BMC status... Done (ver:1.10.18)
+            Enter to Flash Mode
+            Uploading ..................................................100%
+            Upgrading ..................................................100%
+            Verifying ..................................................100%
+            Resetting BMC
+            Done. (BMC needs 1 minute to restart)
+            Please reset system for board configuration
+            Total Elapse Time: 7 min 27 sec(s)
+
+          
+ 7.Added mg and found command set
+
+            found                            found IPMI devices (6)
+            mg                               Manage group command (8)
+
+            Command:found
+            Command(s):
+            list                             List found IPMI devices
+            clear                            Clear found IPMI devices
+            copy <index1> [index2] [...]     Copy to default managed group
+            copyall                          Copy all to default managed group
+            saveAs <filename>                Save found IPMI devices to file
+            refresh                          Refresh found IPMI devices
+
+            Command:mg
+            Command(s):
+            list                             List current managed devices
+            save <filename>                  Save current managed devices to file
+            load <filename>                  Load managed devices from file
+            default                          Manage default group
+            found                            Manage found group
+            sort                             Sort current managed devices
+            clear                            Clear all current managed devices
+            refresh                          Refresh managed devices
+
+ 8. Added "Tagloc" commands. To save location tag in a BMC device.
+
+            tagLoc                           Tag for Location (16)
+            Command:tagloc
+            Command(s):
+            dataCenter <id>                  get/set data Center tag
+            room <id>                        Get/Set room tag
+            row <id>                         Get/Set row tag
+            rack [id>                        Get/Set rack tag
+            number <major id> [minor id]     Get/Set number tag
+            mbType <id>                      Get/Set mb type tag
+            chassisType <id>                 Get/Set chassis type tag
+            PowerType <id>                   Get/Set power supply type tag
+            osType <id>                      Get/Set OS type tag
+            string <text>                    OEM String(max 20 characters)
+            info                             Display tag Info
+            label                            Display tag Label
+            clear                            Clear tag
+            export [filename]                Export to file
+            import [filename]                Import from file
+
+ 9. added "!" as a short cut for display tagloc information
+            192.168.23.93 X8DTN+-F (S0/G0,66w) 19:35 SIM(WA)>(press '!')
+            DC: 0 |Room: 0 |Row: 0 |Rack: 1 |#: 2.0 |Type:Unspecified
+
+ -------------------------------------------------------------------------------
+  Version 2.1.3 build 120411
+ -------------------------------------------------------------------------------
+ 1.Fixed error to launch KVMPlugIn.jar & minor bug fixed
+ 2.Updated iKVM 1.69 r13 shared library for VM issue (*.ima uploader)
+ 3.Added Get/Set command for Gatway,Netmask and MAC addres for SIMBL via CMM
+ 4.Fixed NullPointException thrown in SEL querying in specific condition
+ 5.Added X9 OEM SEL
+
+ -------------------------------------------------------------------------------
+  Version 2.1.2 build 120320
+ -------------------------------------------------------------------------------
+ 1. Fixed loading error for properties file if missing file
+ 2. Fixed incorrect CPU Vcore voltage of B8DTT in V2.1.1
+  
+ -------------------------------------------------------------------------------
+  Version 2.1.1 build 120308
+ -------------------------------------------------------------------------------
+
+ 1.Added B9DRE and B9DRG blades
+ 2.Added Fan Speed commands (ipmi fan command)
+ 3.Added new board IDs in MB Table
+ 4.Updated Commmand list
+ 5.Updated format for firmware version (ipmi ver command)
+ 6.Updated "<", ">" shortcuts. Return to original managed BMC when change host("ch")
+   an non-exist BMC address
+ 7.Fixed bug in calculating blade memory size
+ 
+    
+ -------------------------------------------------------------------------------
+  Version 2.1.0 build 120224
+ -------------------------------------------------------------------------------
+
+  1.Updated the reading = -1 of P state and t state as "value is unavailable".
+  2.Updated "ch" command. Return to original managed BMC when change host("ch") 
+    to a non-exist BMC address
+  3.Added automatically persistent managed devices in shell mode (encryption 
+    for username/password) the managed BMC devices will be load after restart 
+	shell mode.
+  4.Updated "nm20 cpumemtemp" by Tjmax recalulating and memory alias.
+  5.Updated NMSDR checking method for more precisely
+  6.Added 'curr' for hostrun command. 'curr' means the devices managed in the 
+    'ch' command
+  7.Updated nm20 listImageInfo command . Removed firmware version to prevent 
+    conflict with meInfo.exe
+  8.Updated SOL window to support 100*31 resolution (UEFI BIOS screen)
+  9.Fixed SOL screen scroll fresh issue
+  10.Updated format of ME version. Follow the way of Intel MeInfo.exe and AMI 
+     BIOS for consistency
+  11.Updated PMBus information for reduntant charaters
+
+ -------------------------------------------------------------------------------
+  Version 2.0.0 build 111214
+ -------------------------------------------------------------------------------
+  1.SMCIPMITool 2.0.0 added 3 helpful features for more easily manage system
+   a.Enhanced prompt
+   b.Easily switching managed system
+   c.Built-in Search function
+  More detail at Chap 5.New feature (SMCIPMITool v2.0.0)
+  
+  2.Updated iKVM 1.69 r13
+
+ -------------------------------------------------------------------------------
+  Version 1.11.4 build 111125
+ -------------------------------------------------------------------------------
+ 
+ 1. Added "Host CPU Data" and "CPU and Memory temperature" sub commands in nm20
+ 
+    cpuMemTemp                       Get CPU/Memory temperature
+    hostCpuData                      Get host CPU data 
+            
+            Example:
+            SIM(WA)>nm20 cpuMemTemp
+            CPU#0 = 57(c)
+            CPU#1 = 58(c)
+            [CPU#0]CHANNEL#0, DIMM#0 = 28(c)
+            [CPU#0]CHANNEL#1, DIMM#0 = 27(c)
+            [CPU#0]CHANNEL#2, DIMM#0 = 26(c)
+            [CPU#0]CHANNEL#3, DIMM#0 = 26(c)
+            [CPU#1]CHANNEL#0, DIMM#0 = 26(c)
+            [CPU#1]CHANNEL#1, DIMM#0 = 26(c)
+            [CPU#1]CHANNEL#2, DIMM#0 = 26(c)
+            [CPU#1]CHANNEL#3, DIMM#0 = 26(c)            
+ 
+            SIM(WA)>nm20 hostCpuData
+            Host CPU data:
+            End of POST notification was received
+            Host CPU discovery data is valid
+            Number of P-States = 10
+            Number of T-States = 15
+            Number of installed CPUs/socket = 2
+            Processor Discovery Data-1 = 19 19 18 18 17 17 17 17
+            Processor Discovery Data-2 = 00 14 01 6C 00 0C 00 00 
+
+ -------------------------------------------------------------------------------
+  Version 1.11.3 build 111121
+ -------------------------------------------------------------------------------
+ 1. Added number of sub commands in the help list
+ 2. Fixed a wrong parameter for "nm20 oemGetTemp" command
+ 3. Updated unit for nm20 statistics command
+ 4. Added Debug command (Display raw data between you and BMC)
+    
+    Usage: debug [0|1|2|3]
+      level 0 : No raw displayed
+      level 1 : Human read raw data.
+                IPMI Reqeuest (NetFn, Cmd, Data ...)
+                BMC  Response (Completion, Data ...)
+      level 2 : IPMI Message raw format
+      level 3 : IPMI Message raw format with detailed field list
+
+      The setting will be stored into SMCIPMITool.properties once the level has 
+	  been changed. 
+      The debug level applies both to command mode and shell mode.
+
+      Example: [ipmi ver] command with different debug level
+      
+      SIM(X9)>debug 0
+      debug level = 0
+      level 0 : No raw displayed
+      
+      SIM(X9)>ipmi ver
+      Firmware Revision  = 00.10
+      IPMI Version       = 2.0
+      Manufacturer ID    = 7C 2A 00
+      product ID         = BB AA 00
+      
+      SIM(X9)>debug 1
+      debug level = 1
+      level 1 : Human read raw data.
+                IPMI Reqeuest (NetFn, Cmd, Data ...)
+                BMC  Response (Completion, Data ...)
+      
+      SIM(X9)>ipmi ver
+      [ YOU -> BMC : 06 01 ]
+      [ YOU <- BMC : 00 20 01 00 10 02 BF 7C 2A 00 BB AA 0D 00 00 00 ]
+      Firmware Revision  = 00.10
+      IPMI Version       = 2.0
+      Manufacturer ID    = 7C 2A 00
+      product ID         = BB AA 00
+      
+      SIM(X9)>debug 2
+      debug level = 2
+      level 2 : IPMI Message raw format
+      
+      SIM(X9)>ipmi ver
+      [ YOU -> BMC : 20 18 C8 41 00 01 BE ]
+      [ YOU <- BMC : 41 1C A3 20 00 01 00 20 01 00 10 02 BF 7C 2A 00 BB AA 0D 00 00 00
+       D5 ]
+      Firmware Revision  = 00.10
+      IPMI Version       = 2.0
+      Manufacturer ID    = 7C 2A 00
+      product ID         = BB AA 00
+      
+      SIM(X9)>debug 3
+      debug level = 3
+      level 3 : IPMI Message raw format with Field listed
+      
+      SIM(X9)>ipmi ver
+      ===================
+      Direction = Request
+      rsSA      = 20
+      netFnLun  = 18
+      checkSum1 = C8
+      rqSA      = 41
+      rqSeqLun  = 00
+      cmd       = 01
+      data      =
+      checkSum2 = BE
+      Msg Size  = 7(int)
+      To Array  = 20 18 C8 41 00 01 BE
+      ===================
+      
+      ====================
+      Direction = Response
+      rqSA           = 41
+      netFnLun       = 1C
+      checkSum1      = A3
+      rsSA           = 20
+      rqSeqLun       = 00
+      cmd            = 01
+      completionCode = 00
+      data           = 20 01 00 10 02 BF 7C 2A 00 BB AA 0D 00 00 00
+      checkSum2      = D5
+      Msg Size       = 23(int)
+      To Array       = 41 1C A3 20 00 01 00 20 01 00 10 02 BF 7C 2A 00 BB AA 0D 00 00
+      00 D5
+      ===================
+
+      Firmware Revision  = 00.10
+      IPMI Version       = 2.0
+      Manufacturer ID    = 7C 2A 00
+      product ID         = BB AA 00
+
+      SIM(X9)>
+
+
+
+-------------------------------------------------------------------------------
+  Version 1.11.2 build 111110
+ -------------------------------------------------------------------------------
+ 1. Updated L3 Switch initial flag issue
+ 2. Added 4*Gigabit Switches for ZTE SuperBlade customization
+
+ 
+ 
+ -------------------------------------------------------------------------------
+  Version 1.11.1 build 111027
+ -------------------------------------------------------------------------------
+ 1. Fixed X9 AMI Virtual Media "cdrom service disabled" issue 
+    (For "kvmwx9" or "ukvm" commands)
+ 
+ 
+ -------------------------------------------------------------------------------
+  Version 1.11.0 build 111025
+ -------------------------------------------------------------------------------
+ 1.Added PS FRU infomration command
+   command: psfruinfo [<busId> <SlaveAddr>]
+ 2.Updated pmInfo command 
+   
+ -------------------------------------------------------------------------------
+  Version 1.10.1 build 111003
+ -------------------------------------------------------------------------------
+ 1. Added Get/Set DNS server commands
+ 2. Update "N/A" checking for Voltage & Fan when reading = 0
+
+ -------------------------------------------------------------------------------
+  Version 1.10.0 build 110805
+ -------------------------------------------------------------------------------
+ 1. Added X9 SH7757 Support 
+ 2. Added AMI X9 KVM console. Command is "kvmwx9" or "ukvm" for auto detection
+ 3. Updated PMBus STATUS_BYTE
+
+ -------------------------------------------------------------------------------
+  Version 1.9.0 build 110624
+ -------------------------------------------------------------------------------
+ 1. Added ME Node Manager v2.0 commands for X9 MB(nm20 series commands)
+    Refer chapter 8
+ 
+   Command:nm20
+   Command(s):
+   nmSDR                            Display NM SDR
+   selTime                          Get SEL time
+   deviceID                         Get ME Device ID
+   reset                            Reboots ME
+   reset2Default                    Force ME reset to Default
+   updateMode                       Force ME to Update Mode
+   powerOff                         Set ME power state off
+   selfTest                         Get Self Test Results
+   mode                             Get ME running Mode
+   listImagesInfo                   List ME Images information
+   oemGetPower                      OEM Power command for ME
+   oemGetTemp                       OEM Temp. command for ME
+   globalEnable                     Global Enable NM policy control
+   globalDisable                    Global Disable NM policy control
+   domainEnable <domain ID>         per Domain Enable NM policies
+   domainDisable <domain ID>        per Domain Disable NM policies
+   policyEnable <domain ID> <policy ID>     per Policy Enable NM policy
+   policyDisable <domain ID> <policy ID>    per Policy Disable NM policy
+   addPowerPolicy <pID> <limit> <t> <p>     Add Power Policy
+   getPolicy <domain ID> <policy ID>        Get Policy
+   delPolicy <domain ID> <policy ID>        Delete Policy
+   scanPolicy                       Scan all presented Policies
+   addPolicy <dID> <pID> <ptt> <agg> <a> <l> <t> <tl> <p>   Add Policy
+   statistics <mode> <domainID> <policy ID>         NM statistics
+   resetStatistics <mode> <domain ID> <policy ID>   Reset NM statistics
+   cap <domain ID> <Trigger Type>   NM Capabilities
+   ver                              NM Version
+   alert [dest]                     NM Alert
+   pstate [value]                   Get/Set Max allowed CPU P-State
+   tstate [value]                   Get/Set Max allowed CPU T-State
+   ptstate                          Show CPU P-State and T-State
+   cpuCore [cores]                  Get/Set max allowed CPU cores
+   totalPower <domainID> [watts]    Get/Set Total Power Budget 
+ 
+
+ 2. Updated "nm cap" wrong information for Limiting based
+ 3. Fixed FRU size overflow
+
+ -------------------------------------------------------------------------------
+  Version 1.8.5 build 110613
+ -------------------------------------------------------------------------------
+ 1. Fixed bug that out of range error for setting NM P-State and T-State command
+ 2. Updated "nm ver" command to support display NM 2.0 version 
+    (Current NM commands are designed for NM v1.5)
+  
+ -------------------------------------------------------------------------------
+  Version 1.8.4 build 110531
+ -------------------------------------------------------------------------------
+ 1. Added iKVM v1.69 r6 (work for ATEN KVM firmware v2.29 or above)
+
+ -------------------------------------------------------------------------------
+  Version 1.8.2 build 110527
+ -------------------------------------------------------------------------------
+ 1. Updated NMSDR slave address (fixed "nm" commands for X9 ME testing)
+ 2. Added X9 GUID supported
+ 3. Added sessioninfo sub command under ipmi command
+
+ -------------------------------------------------------------------------------
+  Version 1.8.1 build 110412
+ -------------------------------------------------------------------------------
+
+ 1. Updated B8DTG
+ 2. Added BHDGT
+ 3. Update blade hw info for supporting 128G memory size
+
+ -------------------------------------------------------------------------------
+  Version 1.8.0 build 110125
+ -------------------------------------------------------------------------------
+
+ 1. Added B8DTG, BHQG6 for blade system
+ 2. Updated PMBus Module Number for PMInfo command
+ 3. Updated iKVM v1.68 r1
+ 4. Added new SMCIPMITool User Guide  
+ 
+ -------------------------------------------------------------------------------
+  Version 1.7.9 build 101124
+ -------------------------------------------------------------------------------
+
+ 1. Improved IPMB command stability for CMM
+
+ -------------------------------------------------------------------------------
+  Version 1.7.8 build 101115
+ -------------------------------------------------------------------------------
+
+ 1. Added "deploy check" command for SuperBlade
+ 2. Added Attach & Boot opt command for deploy abstract Task
+ 3. Added boundary check for deploy all command. (invalid IP)
+
+ -------------------------------------------------------------------------------
+  Version 1.7.7 build 101102
+ -------------------------------------------------------------------------------
+
+ 1. Added DCMI find(discover) command
+    Command(s):
+	find [<Start> <End> <netMask>]   Find DCMI device from local or IP range
+	cap                              List DCMI Capabilities Info
+
+ 2. Added Gigabit Switch new commands
+    ipmode []  IP Mode.1->static IP, 2->DHCP
+    boot []    Boot Image.1->main image, 2->fallback image
+    restart    soft restart
+    fd         Reset to factory default	
+	
+ 2. Fixed NullPointer exception of "deploy one" command
+ 3. Bug fixed for wrong display message of "deploy all" command
+ 
+ 4. iKVM update
+    a.Support 256 local HDs for Virutal Stroage
+    b.Remove WEB ISO and image upload in virtual Stroage v1.66
+
+
+ -------------------------------------------------------------------------------
+  Version 1.7.6 build 101011
+ -------------------------------------------------------------------------------
+ 1. Fixed ATEN KVM cannot start in Linux env
+ 2. Added ATEN KVM start parameter for virutal Media (port 623)
+ 3. Fixed the native method loading issue. A problem when loading ATEN Virtual 
+    Media in Linux env
+ 4. Fixed bug for "vmwa dev1list" command. a dummy drv didn't removed
+
+ -------------------------------------------------------------------------------
+  Version 1.7.5 build 101006
+ -------------------------------------------------------------------------------
+ 1. Added ATEN virutal media commands
+   Available commands:
+   dev1list             List available devices for virtual device 1
+   dev1drv <index>      Mount drive for virtual device 1
+   dev1stop             Stop virtual device 1
+   dev2list             List available devices for virtual device 2
+   dev2cd  <index>      Mount CD/DVD for virtual device 2
+   dev2iso <filename>   Mount ISO file for virtual device 2
+   dev2stop             Stop virtual device 2
+   allstatus            Show all VMWA status
+   status               Show status
+   log                  Show log
+
+
+   Note:
+   * Support 2 virtual devices (device 1 & device 2)
+     Device 1 will be Hard Disk,USB or Floppy
+     Device 2 will be CD,DVD or ISO file
+   * List available devices before mount virtual media when plug in
+    Removable device
+
+ 
+ -------------------------------------------------------------------------------
+  Version 1.7.1 build 100917
+ -------------------------------------------------------------------------------
+ 1. Fixed cannot read pmInfo in 1K41P Power supply
+
+ -------------------------------------------------------------------------------
+  Version 1.7.0 build 100913
+ -------------------------------------------------------------------------------
+ 1. Added Deploymenet Utilities command
+
+  Command:deploy
+    Command(s):
+    one <ISO file>                   Deploy BIOS/FW for general Server
+    all <ISO file>                   Deploy BIOS/FW for SuperBlade
+    status                           Display current status of deployment process
+    clear                            clear and remove all Virtual Media session
+
+ 2. Added 10G Switch support
+ 3. Updated sensor type name to be "OEM" of 0xC0 sensor type. (HDD S.M.A.R.T and CPU Overheat) 
+ 4. Updated iKVM v1.63 r1
+ 5. Added 20x 1GbE pass thru
+
+ -------------------------------------------------------------------------------
+  Version 1.6.3(beta) build 100903
+ -------------------------------------------------------------------------------
+ 1.Internal released
+
+ -------------------------------------------------------------------------------
+  Version 1.6.2 build 100720
+ -------------------------------------------------------------------------------
+ 1. Added command "kvmwa" for SIM(WA) KVM in graphics mode
+ 2. Added command "ukvm" for launch CMM,SIMBL,SIM,SIM(W) and SIM(WA) automatically
+ 3. Added "allsel <filename>" command for convert all blade sel to csv file
+ 4. Added "sel csv" command for save SEL as csv file
+ 5. Added FRU File ID field in board and Product info
+ 6. Fixed X8DTG SDR missing issue(X8DTG-DF Rev 1.3/2.00 ,AMI firmware)
+
+ -------------------------------------------------------------------------------
+  Version 1.6.1 build 100510
+ -------------------------------------------------------------------------------
+ 1. Updated FRU display function
+    (Ability to show Internal use area, MultiRecord area, OEM custom field)
+ 2. Added B8DTP, B8DT6_OEM, B8DTT_OEM for blade system
+ 3. Updated SMART failure SEL (DISK 0 failure cannot be displayed)
+ 4. Updated conversion formula for PMBus information.
+ 5. Updated high&low limit refer to non-critical value in the sensor command 
+ 6. Fixed overflow of low limit of temperature
+ 7. Added CPU overheat SEL for ATEN FW
+ 8. Fxied bug of event log for memory ECC error
+ 9. Remove SMCIPMITool-linux due to unhandled problem. 
+    Use java -jar SMCIPMITool.jar instead
+
+ -------------------------------------------------------------------------------
+  Version 1.6.0 build 100223
+ -------------------------------------------------------------------------------
+ 1.Support Node Manager commands. (Commands to ME)
+   
+ Available command(s):
+ detect                           detect if ME presented
+ ver                              Node Manager version
+ cap                              Node Manager capabilities
+ status [enable|disable]          Enable/Disable Node Manager
+ stat [id]                        Get power statistics(or by PolicyId)
+ resetStat [id]                   Reset power statistics(or by PolicyId)
+ pstate [value]                   Get/Set P-State
+ tstate [value]                   Get/Set T-State
+ ptstate                          Show P-State and T-State
+ alert [dest]                     Get/Set alert destination (See LAN Config)
+ scanPolicy [end]                 Scan Policy
+ addPolicy <id> <limit> <t> <p>   Add Policy
+ delPolicy <id>                   Delete Policy
+ getPolicy <id>                   Get Policy
+ enablePolicy <id>                Enable Policy
+ disablePolicy <id>               Disable Policy 
+
+   
+ Examples:
+ 
+ 1.Detect if Node Manager supported  
+  
+  Example:  
+  SIM(WA)>nm detect
+  This device supports Node Manager
+
+ 2.Node Manager version
+  
+  Example:      
+  SIM(WA)>nm ver
+  Node Manager Version = 1.5
+  Firmware Version     = 1.05
+ 
+ 3.Node Manager capabilities
+  
+  Example:  
+  SIM(WA)>nm cap
+  Max concurrent settings         = 10
+  Max Power limit value           = 32767 w
+  Min Power limit value           = 0 w
+  Max Correction Time settable    = 600000 ms
+  Min Correction Time settable    = 6000 ms
+  Max Statistics Reporting period = 3600 s
+  Min Statistics Reporting period = 1 s
+  Limiting type                   = CPU power limiting
+  Limiting based on               = Wall input power. PSU input power
+ 
+ 4.Node Manager status
+  
+  Example:
+  SIM(WA)>nm status
+  Node Manager is enabled
+
+ 5.Node Manager statistic
+  
+  Example:  
+  SIM(WA)>nm stat
+  Gloabal Power statistic
+  Current = 209 w
+  Minimum = 128 w
+  Maximum = 255 w
+  Average = 166 w
+  Time    = 02/23/2010 11:11:27 TUE
+  Reporting Period = 1 sec
+  Node Manager is enabled
+  Measurements in progress  
+
+ 6.Node Manager statistic with Policy ID
+  
+  Example:  
+  SIM(WA)>nm stat 11
+  Policy Id = 11
+  Current = 209 w
+  Minimum = 209 w
+  Maximum = 210 w
+  Average = 209 w
+  Time    = 02/23/2010 11:12:19 星期二
+  Reporting Period = 60 sec
+  Policy is not enabled
+  Measurements in progress
+
+ 7.Show P-State & T-State
+  
+  Example:   
+  SIM(WA)>nm ptstate
+  P-State : High |#______________| Low    [0/15] (Current/Number of State)
+  T-State : High |#_______| Low   [0/8] (Current/Number of State) 
+
+ 8.Add Policy  ( addPolicy <id> <limit> <correction time(ms)> <report period(s)> )
+
+  This command create a policy with following parameters.
+  Policy id = 15
+  power limit = 150w	
+  correction time = 60000 ms
+  report period = 10 s
+
+  Example:  
+  SIM(WA)>nm addPolicy 15 150 60000 10
+  Done
+
+ 9.Get Policy
+  
+  Example:  
+  SIM(WA)>nm getPolicy 15
+  Power Limit = 150 w
+  Correction Time limit       = 60000 ms
+  Statistics Reporting Period = 10 s
+  Policy state:
+      Policy enabled
+      Per Domain Node Manager policy control enabled
+      Global Node Manager policy control enabled
+  Policy Exception action state:
+      Send alert
+
+ 10.Alert setting
+   Check "ipmi lan snmp" command to determine which lan destination to send Node Manager alert. The alert will
+   be sent by Node Manager 
+  Example:
+  SIM(WA)>ipmi lan snmp
+  Seq                   IP                  MAC
+  ---                   --                  ---
+    1              0.0.0.0    00:00:00:00:00:00
+    2       192.168.12.150    00:00:00:00:00:00
+    3              0.0.0.0    00:00:00:00:00:00
+    4              0.0.0.0    00:00:00:00:00:00
+    5              0.0.0.0    00:00:00:00:00:00
+    6              0.0.0.0    00:00:00:00:00:00
+    7              0.0.0.0    00:00:00:00:00:00
+    8              0.0.0.0    00:00:00:00:00:00
+    9              0.0.0.0    00:00:00:00:00:00
+   10              0.0.0.0    00:00:00:00:00:00
+   11              0.0.0.0    00:00:00:00:00:00
+   12              0.0.0.0    00:00:00:00:00:00
+   13              0.0.0.0    00:00:00:00:00:00
+   14              0.0.0.0    00:00:00:00:00:00
+   15              0.0.0.0    00:00:00:00:00:00
+  SIM(WA)>nm alert 2
+  Done
+  SIM(WA)>nm alert
+  Destionation selector = 2
+ 
+ 11.Node Manager alert sent from ME
+  
+  Example:
+  SIM(WA) [!Trap(1)]>trap list
+  -------------------------------------------------------------------------
+  Trap (1)
+  Sender      = 192.168.12.161
+  Community   = public
+  Sensor      = Node Manager Alert Threshold Exceeded Sensor
+  Local Time Stamp = 2010/02/23 11:15:53 星期二
+  Description :
+  Event Dir : Assertion
+  Event Type : 72h
+  Policy event : Threshold exceeded
+  Threshold Index : 0
+  Policy ID = 15
+ 
+ 12.Check Power Supply status
+  
+  Example:  
+  SIM(WA)>pminfo
+   [SlaveAddress = 78h]
+   Item                           |                Value
+   ----                           |                -----
+   Status                         |
+   AC Input Voltage               |              101.0 V
+   AC Input Current               |               1.17 A
+   DC 12V Output Voltage          |              12.08 V
+   DC 12V Output Current          |               8.12 A
+   Temperature 1                  |              17C/63F
+   Temperature 2                  |              33C/91F
+   Fan 1                          |             9389 RPM
+   DC 12V Output Power            |                 98 W
+   AC Input Power                 |                111 W
+   PMBus Revision                 |               0x0001
+   PWS Serial Number              |      0000DH109100009
+   PWS Module Number              |          PWS-721P-1R
+   PWS Revision                   |               REV1.0
+  
+ 
+ -------------------------------------------------------------------------------
+  Version 1.5.9 build 100212
+ -------------------------------------------------------------------------------
+ 1. Updated formula for pmInfo command
+ 2. Fixed delsdr command cannot delete if SDR ID more then 3 chars
+
+ -------------------------------------------------------------------------------
+  Version 1.5.8 build 100104
+ -------------------------------------------------------------------------------
+ 1. Added TwinBlade supported
+ 2. Added B8DTT supported
+ 
+ -------------------------------------------------------------------------------
+  Version 1.5.7 build 091009
+ -------------------------------------------------------------------------------
+ 1. Added IBQDR
+ 2. Updated BHQIE sensors' formula
+
+ -------------------------------------------------------------------------------
+  Version 1.5.6 build 090810
+ -------------------------------------------------------------------------------
+
+ 1.Rebuild from 1.5.5. Fixed the missed files.
+
+ -------------------------------------------------------------------------------
+  Version 1.5.5 build 090804
+ -------------------------------------------------------------------------------
+ 1. Added assertion and deassertion type in trap receiver
+ 2. Updated pmInfo command for supporting {0xb0,0x78,0x7a,0x7c,0x7e} slave address
+ 3. Updated pmInfo command (fomula of power watts)
+ 4. Added B8DTL-E and B8DTL-L
+ 5. Updated PEF table for ATEN's fw
+ 6. Fixed a bug that cannot receive trap which send by ATEN's fw
+ 7. Added delete sdr command
+    Command: delsdr <SDR record ID>           Delete SDR
+    ex:delsdr 10
+ 8. Added BHQIE sensor's table    
+
+ -------------------------------------------------------------------------------
+  Version 1.5.4 build 090601
+ -------------------------------------------------------------------------------
+ 1. Added PMBus command for getting power supply health info
+            pminfo [<busId> <SlaveAddr>]     PMBus health
+ Example:          
+ SIMBL>pminfo
+  Item                           |                Value
+  ----                           |                -----
+  Status                         |          [Status OK]
+  AC Input Voltage               |               97.5 V
+  AC Input Current               |               1.43 A
+  DC 12V Output Voltage          |              12.09 V
+  DC 12V Output Current          |                9.5 A
+  Temperature 1                  |              33C/91F
+  Temperature 2                  |             38C/100F
+  Fan 1                          |             9847 RPM
+  DC 12V Output Power            |                114 W
+  AC Input Power                 |                133 W
+  PMBus Revision                 |               0x0001
+  PWS Serial Number              |      P7211C914IT0835
+  PWS Module Number              |          PWS-721P-1R
+  PWS Revision                   |               REV1.0 
+                        
+ 2. Updated memory ecc SEL for X8 series board
+
+ -------------------------------------------------------------------------------
+  Version 1.5.3 build 090420
+ -------------------------------------------------------------------------------
+ 1. Updated Blade HW configuration
+ 2. Updated B8DT6/E sensor's table
+ 3. Added SEL event for CPU temp overheat
+ 4. Added B8DT6/E sensor's table
+ 5. Updated SNMP setting for AMI's new FW update
+ 6. Added IPMB raw command for KIRA and Winbond
+
+ -------------------------------------------------------------------------------
+  Version 1.5.2 build 090302
+ -------------------------------------------------------------------------------
+ 1. Updated SNMP setting for AMI's new FW update
+ 2. Added IPMB raw command for KIRA and Winbond
+ 3. Added UID function for AMI
+ 4. Added sensor number in IPMI sensor command
+
+ -------------------------------------------------------------------------------
+  Version 1.5.1 build 090204
+ -------------------------------------------------------------------------------
+ 1. Added more info for ECC and PCI error SEL event
+ 2. Added DHCP command into CMM cmd category
+
+ -------------------------------------------------------------------------------
+  Version 1.5.0 build 081231
+ -------------------------------------------------------------------------------
+ 1. Added KVM,Virtul Media and Flash command for Hermon (SIMSOW)
+    a.PlugIn Command: "kvmw" for KVM Window mode
+    b.PlugIn Command: "vmw" for virtual Media
+          vmw floppy <image file>          Floppy image as virtual media
+          vmw usbkey <drive letter>        USB key as virutal media
+          vmw iso    <ISO file>            ISO file as virtual media
+          vmw cd     <drive letter>        CD/DVD drive as virutal media
+          vmw stopFloppy                   Stop connected floppy
+          vmw stopUsbkey                   Stop connected USBKey
+          vmw stopISO                      Stop connected ISO
+          vmw stopCD                       Stop connected CD/DVD
+          vmw status(st)                   Virtual Media status
+    c."ipmi flashw" command for Hermon fw flashing
+
+ 2. Updated SNMP pef table for AMI in "ipmi lan snmp" command
+ 3. Added SIMBL(W) guid
+ 4. Updated SNMP Destination count
+ 5. Added AMD CPU in the blade info (motherboard configuration)
+    Command list:
+      bl <blade Index> config
+ 6. Fixed user ID cannot be deleted in AMI's fw
+ 7. Fixed CPU not installed display error in AMI's fw
+ 8. Renamed SuperBladeTool to SMCIPMITool. Since it supports both SuperBlade 
+    and IPMI products
+ 9. Added B7DCL sensor table
+
+ -------------------------------------------------------------------------------
+  Version 1.04.13 build 080908
+ -------------------------------------------------------------------------------
+ 1. Added 10G pass Thru management status in sys command
+
+ -------------------------------------------------------------------------------
+  Version 1.04.12 build 080812
+ -------------------------------------------------------------------------------
+ 1. Updated winbond GUIDs. Includes both on-board and add-on types.
+ 2. Updated the blade sensors threshold reading. The blade CPU and system threshold
+    temperature are read from BIOS setting.
+ 3. Added new CPU text temperature status (low, medium, high and overheat status)
+ 4. Added pulse diagnostic interrupt command
+    Command:
+    CMM>ipmi power diag
+
+ -------------------------------------------------------------------------------
+  Version 1.04.11 build 080718
+ -------------------------------------------------------------------------------
+ 1. Added B7DC3-IB supported
+ 2. Added motherboard configuration command
+           Command list:
+           bl <blade Index> config
+           CMM>bl 7 config
+             MB ID           = B1
+             Pwr Consumption = 300W
+             CPUs            = 1
+             CPU Type        = Dempsey B1
+             CPU Speed       = 3.00Ghz
+             DIMMs           = 1
+             Memory Size     = 1024MB
+             Memory Speed    = 667Mhz
+             LANs            = 2
+             LAN 1 MAC       = 01:00:02:00:00:00
+             LAN 2 MAC       = 01:00:02:00:00:01
+
+ -------------------------------------------------------------------------------
+  Version 1.04.10 build 080623
+ -------------------------------------------------------------------------------
+ 1. Changed display of power supply watts (1400 -> 1400/1200) when power is off
+ 2. SIMSO-W+ added
+
+ -------------------------------------------------------------------------------
+  Version 1.04.09 build 080613
+ -------------------------------------------------------------------------------
+ 1. Changed display of power supply watts (1400 -> 1400/1200)
+ 2. Added Office blade and Enterprise blade mode
+
+ -------------------------------------------------------------------------------
+  Version 1.04.07 build 080515
+ -------------------------------------------------------------------------------
+ 1. Added retry mechanism for IPMB call. Make IPMB call more stable
+
+ -------------------------------------------------------------------------------
+  Version 1.04.06 build 080508
+ -------------------------------------------------------------------------------
+ 1.Changed 1.8V to Memory Voltage and changed low limit to 1.34v.
+ 2.Fixed a false alarm of cpu 2 core A temp and cpu2 core B temp.
+   It shows "CPU2 Core A Temp:Reading out of range" on fail command
+   when you install 2 CPUs with PECI feature.
+
+ -------------------------------------------------------------------------------
+  Version 1.04.05 build 080430
+ -------------------------------------------------------------------------------
+ 1.Added function for setting SIMBL VLAN and DHCP function via IPMB from CMM
+ 2.Added function for sending IPMI raw command via IPMB from CMM
+
+    Command:bl <blade_index> bmc
+    Available command(s):
+      ip [IP]                          Get/set BMC IP
+      dhcp [enable|disable]            Enable/Disable DHCP
+      vlan [<enable|disable> <tag>]    Display/Enable/Disable VLAN
+      ipmb <netFn> <cmd> [data]        Send IPMI raw command. netFn<<2 is needed
+
+ 3.Added DOS/Linux shell command supported.
+    Examples:
+      CMM>sc dir (execute dir command in Windows OS)
+      CMM>sc ls (execute ls command in Linux OS)
+      CMM>sc ping 192.168.10.123 (execute ping command)
+
+ -------------------------------------------------------------------------------
+  Version 1.04.04 build 080418
+ -------------------------------------------------------------------------------
+ 1.Added Display/Enable/Disable VLAN command
+   ipmi lan vlan [<enable|disable> <VLAN tag>]
+ 2.Added Get/Set SNMP community string command
+   ipmi lan snmpcomm [community string]
+ 3.Added support for BHDME MB
+
+ -------------------------------------------------------------------------------
+  Version 1.04.03 build 080331
+ -------------------------------------------------------------------------------
+ 1.Updated virtual media function for i2c lan type
+  
+ -------------------------------------------------------------------------------
+  Version 1.04.02 build 080329
+ -------------------------------------------------------------------------------
+ 1.Added configuration backup/restore/sync functions
+   Command list:
+      ipmi oem backup
+      ipmi oem restore
+      cmm 1(or 2) syncfg
+ 2.Added "delay" command in the shell mode
+ 3.Added a workround for B7DC3/B7DCE shows SIMBL is installed while it first 
+   pluged into middle plane and powered off.
+ 4.Updated B7DCE,H8DMT,B7DC3,X7SBT,X7SBU in "IPMI OEM ID" command
+ 5.Updated power supply current. Dividing dc output current by 2.
+ 6.Added checker for firmware which doesn't support virutal media
+ 7.Fixed a minor bug in ch command. (Some variables are not cleared)
+ 8.Set chunk size to 80 byte if lan type is share lan1 and lan driver is i2c for
+   firmware upload.
+ 9.Changed the sensor name 1.2V to CPU VTT (Low/hight limit, 0.99/1.32) in Intel
+   blade sensor table.
+10.Fixed GBSW dispaly power on while the power supply is turned off
+ 
+ -------------------------------------------------------------------------------
+  Version 1.04.01 build 080125
+ -------------------------------------------------------------------------------
+ 1.Added tab-completion function like bsh or windows command pormpt
+ 2.Added function that persistence command history. Command History
+  will restore when re-enter shell mode. (Use the Jline)
+
+  Set history in the SMCIPMITool.properties
+  history = on|off
+  if history = on, the all the command history will be save to file and
+  restore when next shell mode.
+
+ 3.Added firmware flash command for SIMXX IPMI
+ 4.Define command return code in Command class.
+   sub Commands can define their own command return code.
+   Script program knows the command result form the command return code.
+ 5.Updated CMM NTP time set function
+ 6.Updated ch command to accpet ".192" type. Not only accept "*.192".
+ 
+ -------------------------------------------------------------------------------
+  Version 1.03.04 build 080118
+ -------------------------------------------------------------------------------
+ 1.Add Command History available in Linux terminal. Pressing up or down key to
+   go through command history. This is completed by adding Jline open source project
+   
+ Note: For SOL function work properly, SOL PlugIn(sol related functions) should 
+       use this version.
+
+ -------------------------------------------------------------------------------
+  Version 1.03.03 build 080109
+ -------------------------------------------------------------------------------
+ 1.Added a checker to check the SEL and SDR mismatch problem
+ 2.Added 14 blades Supported
+ 3.Added 'help' command in the exec mode. (help observe the run time information)
+ 4.Fixed some trap function bugs. (File close, parameter validation)
+ 5.Update trap reciever for blade snmp
+
+ -------------------------------------------------------------------------------
+  Version 1.03.02 build 071128
+ -------------------------------------------------------------------------------
+ 1.Added PlugIn mechanism.
+ 2.Updated the gb pass thru initialized display error
+ 3.Added Virtual Media supported for general SIM IPMI
+
+ -------------------------------------------------------------------------------
+  Version 1.03.01 build 071126
+ -------------------------------------------------------------------------------
+ 1.Added cmm NTP fucntion. 
+           command:ntp <UTC offset> <NTP1> [NTP2]  Sync time with NTP servers
+ 2.Added Trap receive function in shell mode. 
+          Command:trap
+          Available command(s):
+          start                      Strat Trap receiver
+          stop                       Stop Trap receiver
+          status(st)                 Trap receiver status
+          list                       List the received Traps
+          clear                      Clear the received Traps
+          save                       Save the received Traps to file
+          savepet                    Save as the IPMIView TrapReceiver PET format
+           
+		  *Set trap receive in the SuperBladeTool.properties
+          trap = on|off
+          if trap = on, then trap receive will be started when enter to shell mode
+
+ 3.Added reading and threshold in SEL
+ 4.Fixed the sensor name display error in the SEL list
+ 5.Added keyword function in list command
+ 6.Added record function. set "reocrd" field in the SuperBladeTool.properties.
+   *Set record in the SuperBladeTool.properties
+   record = on|off
+   if record = on, the  all the content of shell mode will be record to file
+ 8.Fixed a bug that GB Switch initilized field display error on SuperBladeTool
+
+ -------------------------------------------------------------------------------
+  Version 1.02.01 build 071105
+ -------------------------------------------------------------------------------
+ 1.Added exec command for executing commands from a file  
+   (Command: exec <filename> [loop] [delay])
+ 2.Added all("*") and comma separater for multiple execution on blade, gigabit, 
+   power, ib commands. (see example 2)
+ 3.Added host and group data management. A host.properties file will be created.
+ 4.Added hostrun command. for running a command on a host or a group (see example 1)
+ 5.Imporved command list information.
+ 6.Fixed a bug that no prompt when connect to OSA IPMI  
+   
+   Examples:
+   1.host and hostrun command:
+           CMM>host list
+           Host:
+                   Host                 IP
+                   ----                 --
+                   1.112                (192.168.1.112)
+                   1.119                (192.168.1.119)
+                   bl1                  (192.168.10.243)
+                   bl2                  (192.168.10.244)
+ 
+           Host Group:  
+                   Group Name           Host
+                   ----------           ----
+                   1                    1.112
+                                        1.119
+                   bl                   bl1
+                                        bl2
+ 
+           CMM>hostrun bl ipmi power up
+           [bl1:192.168.10.243]
+           Done
+ 
+           [bl2:192.168.10.244]
+           Done
+
+         
+   2."*" and comma separater support for blade commands:
+           CMM>bl 3,7,10 uid on
+           [ 3]:
+           Done
+           [ 7]:
+           Done
+           [10]:
+           Done
+
+           CMM>bl * power on
+           [ 1]:
+           Blade 1 is not present
+           [ 2]:
+           Blade 2 is not present
+           [ 3]:
+           Done
+           [ 4]:
+           Blade 4 is not present
+           [ 5]:
+           Blade 5 is not present
+           [ 6]:
+           Blade 6 is not present
+           [ 7]:
+           Done
+           [ 8]:
+           Blade 8 is not present
+           [ 9]:
+           Blade 9 is not present
+           [10]:
+           Done
+
+
+
+ -------------------------------------------------------------------------------
+  Version 1.01.02 build 071022
+ -------------------------------------------------------------------------------
+ 1.Added FOUND [clear] sub command and information of last update.
+ 2.Added IPMI oem command
+     2.1 Added clear chassis intrusion command (command: ipmi oem clrint)
+     2.2 Added id command for showing MB ID (command: ipmi oem id)
+     2.3 Added id name command for showing MB name (Command: ipmi oem id name)
+ 3.Fixed a bug that impi raw command cannot accpet the prameter which the msb=1  
+ 4.Added listtemp command for showing all the blade system temp
+         example:
+         CMM>lst
+         Status | Module     | Sensor               |    Reading | High Limit |
+         ------ | ------     | ------               |    ------- | ---------- |
+         OK     | Blade 1    | CPU1                 |   29C/ 84F |   80C/176F |
+         OK     | Blade 1    | CPU2                 |   29C/ 84F |   80C/176F |
+         OK     | Blade 1    | System Temp.         |   33C/ 91F |   75C/167F |
+         OK     | Blade 2    | CPU1                 |   28C/ 82F |   80C/176F |
+         OK     | Blade 2    | CPU2                 |   28C/ 82F |   80C/176F |
+         OK     | Blade 2    | System Temp.         |   33C/ 91F |   75C/167F |
+         OK     | Blade 7    | CPU1 Core A Temp.    |   49C/120F |   80C/176F |
+         OK     | Blade 7    | CPU1 Core B Temp.    |   46C/115F |   80C/176F |
+                | Blade 7    | CPU2 Core A Temp.    |        n/a |   80C/176F |
+                | Blade 7    | CPU2 Core B Temp.    |        n/a |   80C/176F |
+         OK     | Power 1    | Temp.                |   40C/104F |   85C/185F |
+         OK     | Power 2    | Temp.                |   40C/104F |   85C/185F |
+         OK     | Power 3    | Temp.                |   39C/102F |   85C/185F |
+         OK     | Power 4    | Temp.                |   40C/104F |   85C/185F |
+         OK     | GBSW 1     | Switch               |   41C/106F |   80C/176F |
+
+ -------------------------------------------------------------------------------
+  Version 1.01.01 build 071016
+ -------------------------------------------------------------------------------
+ 1.Add FIND command for disocver IPMI device
+ 2.Add FOUND command for list the found IPMI device
+ 3.update history command execution. use \<#>
+ 4.add IPMI command group
+      sensor(sr)                   Sensor status
+      power                        Power control
+      acpi                         ACPI status
+      lan                          LAN configruation
+      fru                          FRU information
+      reset                        reset BMC
+      ver                          IPMI device version
+      raw <netFn> <cmd> [data]     Send IPMI raw command. netFn needs shift 2 bit
+ 
+      Sub Command for lan
+        ip [ip]                          get/set IP. Format:###.###.###.###
+        mac [mac]                        get/set MAC. Format:##:##:##:##:##:##
+        gateway [gateway_IP]             get/set gateway. Format:###.###.###.###
+        netmask [netmask]                get/set netmask. Format:###.###.###.###
+        snmp [<seq> <ip> [mac]]          get/set SNMP destination
+        arp [on|off]                     on/off Gratuitous ARP
+        dhcp [enable|disable]            enable/disable DHCP
+ 
+ 5.fixed "No enough power" message failed.
+ 6.fixed if out put DC power over 130A shows wrong value. It's overflow
+ 7.added short string command instead of long characters typing.
+ 8.added CMM IP address info in the "cmm status" command
+ 9.reduced the number of concurrent connections during the command execution. 
+
+-------------------------------------------------------------------------------
+ Version 1.00.06 build 071005
+-------------------------------------------------------------------------------
+1.add slave CMM check. Only cmm,sel and user functions are available for slave CMM
+2.minor information display changed.
+
+-------------------------------------------------------------------------------
+ Version 1.00.05 build 070918
+-------------------------------------------------------------------------------
+1.Added command history function. press "\" and "/" for executing and displaying
+  command history.
+2.Added "list" command. Print all available commands
+3.Added get/set mac address command in cmm.
+4.Updated SEL list message.
+5.Added more information in help command (press "?" or "help" in shell mode).
+6.Added blade power status in the blade power command. 
+7.Added cmm connected info for "cmm status" or "cmm # status" command.
+8.Added wild card for ch command. Made it easier to change managed cmm ip. 
+  ex:
+  case 1, 192.168.100.118 change to 192.168.100.9
+    CMM>ch *.9
+  case 2, 192.168.100,1 change to 192.168.1.10
+    CMM>ch *.1.10 
+
+-------------------------------------------------------------------------------
+ Version 1.00.04 build 070908
+-------------------------------------------------------------------------------
+ 1.Fixed a DC current negative bug.
+ 2.Updated Fan control command as 1,2,3,4 and auto. auto is automatic fan control.
+ 3.Added ch command in shell mode used for changing IP [username] [password].
+ 4.Changed prompt from "=>" to "CMM>"
+
+-------------------------------------------------------------------------------
+ Version 1.00.03 build 070831
+-------------------------------------------------------------------------------
+ 1.Fixed a parsing bug in shell mode:
+   when giving the "blade" then "ver" command, it still shows blade available 
+   command. It should execute "ver" command.
+
+-------------------------------------------------------------------------------
+ Version 1.00.02 build 070830
+-------------------------------------------------------------------------------
+1.Fixed a problem of taking a long time when running under Linux OS.
+  The root cause was the secure random algorithm taking a long time.
+  This issue doesn't happen in Windows OS.
+  Verified in the following Java Linux versions:
+  a.jre 1.5.0_11 (FC4)
+  b.jre 1.6.0_02 (FC6)
+
+jre1.*.* should match your jre version.
+
+-------------------------------------------------------------------------------
+ Version 1.00.01 build 070823
+-------------------------------------------------------------------------------
+1.Fixed a bug that created a parse command error in shell mode.
+2.Fixed a bug that prevented cmm date/time being set in shell mode.
+3.Added ver command.
+4.Add runtime info for help command in shell mode.
+5.Some minor updates.
+
+-------------------------------------------------------------------------------
+ Version 1.0 build 070822
+-------------------------------------------------------------------------------
+1.First Release	
+
+
+-------------------------------------------------------------------------------
+JLine
+-------------------------------------------------------------------------------
+SMCIPMITool use jline for command history and tab-completion.
+
+JLine is a Java library for handling console input. It is similar in functionality
+to BSD editline and GNU readline. People familiar with the readline/editline 
+capabilities for modern shells (such as bash and tcsh) will find most of the command
+editing features of JLine to be familiar.
+
+For more information, please contact http://jline.sourceforge.net/index.html
+
+-------------------------------------------------------------------------------
+Return code for CLI Mode
+-------------------------------------------------------------------------------
+Following return code can be used in batch or script file.
+
+STATUS_UNDEFINED                           =  144 
+STATUS_DONE                                =    0 
+STATUS_CONNECT_FAILED                      =  145 
+STATUS_LOGIN_FAILED                        =  146 
+STATUS_EXECUTE_PARAMETER_VALIDATE_FAILED   =  147 
+STATUS_EXECUTE_EXCEPTION_OCCURRED          =  148
+STATUS_EXECUTE_FAILED                      =  149
+STATUS_EXECUTE_ON_SLAVE_CMM_OR_UNAVAILABLE =  150
+STATUS_EXECUTE_MODULE_NOT_PRESENT          =  151
+STATUS_EXECUTE_ONLY_FOR_CMM_CONNECTED      =  152
+STATUS_EXECUTE_NOT_SUPPORTED_DEVICE        =  153
+STATUS_EXECUTE_NOT_SUPPORTED_IN_BACKGROUND =  154
+STATUS_EXECUTE_KEY_EXPIRED                 =  155
+STATUS_COMMAND_NOT_FOUND                   =  180 
+STATUS_COMMAND_IP_FORMAT_ERROR             =  181 
+STATUS_COMMAND_PARAMETER_LENGTH_INVALID    =  182 
+STATUS_RESULT_NOT_ENOUGH_POWER             =  215 

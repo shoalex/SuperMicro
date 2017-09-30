@@ -1,0 +1,11 @@
+c:\users\alexs\documents\visual studio 2013\Projects\SuperMicro\SuperMicro\bin\Debug\SuperMicro.exe.config
+c:\users\alexs\documents\visual studio 2013\Projects\SuperMicro\SuperMicro\bin\Debug\SuperMicro.exe
+c:\users\alexs\documents\visual studio 2013\Projects\SuperMicro\SuperMicro\bin\Debug\SuperMicro.pdb
+c:\users\alexs\documents\visual studio 2013\Projects\SuperMicro\SuperMicro\obj\Debug\SuperMicro.csprojResolveAssemblyReference.cache
+c:\users\alexs\documents\visual studio 2013\Projects\SuperMicro\SuperMicro\obj\Debug\SuperMicro.exe
+c:\users\alexs\documents\visual studio 2013\Projects\SuperMicro\SuperMicro\obj\Debug\SuperMicro.pdb
+I:\work\Silicom\C# Exmples\SuperMicro\SuperMicro\bin\Debug\SuperMicro.exe.config
+I:\work\Silicom\C# Exmples\SuperMicro\SuperMicro\obj\Debug\SuperMicro.exe
+I:\work\Silicom\C# Exmples\SuperMicro\SuperMicro\obj\Debug\SuperMicro.pdb
+I:\work\Silicom\C# Exmples\SuperMicro\SuperMicro\bin\Debug\SuperMicro.exe
+I:\work\Silicom\C# Exmples\SuperMicro\SuperMicro\bin\Debug\SuperMicro.pdb
