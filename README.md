@@ -1,6 +1,12 @@
 # IPMITool
 
-The Project show how to connect and work with SuperMicro IPMI Tool
+The Project show how to connect and work with SuperMicro IPMI Tool and motherbard
+
+# Features
+- Connect to IPMI motherboard
+- Control power remoutly
+- Control fan speed
+
 
 ### Prerequisites
 
@@ -19,5 +25,3 @@ Alex Shoyhit
 Contact Information:
 
 Linkedin:<a href="https://www.linkedin.com/in/alexshoyhit/"> Alex Shoyhit</a>
-
-Facebook:<a href="https://www.facebook.com/AlexShoyhitSofttware/"> Alex Shoyhit</a>
